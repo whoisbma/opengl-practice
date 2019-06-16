@@ -1,5 +1,5 @@
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <GLFW/glfw3.h>	
 
 #include <iostream>
 #include <fstream>
@@ -24,29 +24,42 @@
 #include "test/TestClearColor.h"
 #include "test/TestTexture2D.h"
 
+void glfwErrorCallback(int error, const char* description)
+{
+	fprintf(stderr, "Error: %s\n", description);
+}
+
+static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
+}
+
 int main(void)
 {
 	GLFWwindow* window;
 
-	/* Initialize the library */
-	if (!glfwInit())
-		return -1;
+	if (!glfwInit()) {
+		exit(EXIT_FAILURE);
+	}
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(640, 480, "GLFW", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
-		return -1;
+		exit(EXIT_FAILURE);
 	}
 
-	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
+
+	glfwSetErrorCallback(glfwErrorCallback);
+	glfwSetKeyCallback(window, keyCallback);
 
 	if (glewInit() != GLEW_OK) {
 		std::cout << "glewInit() ERROR\n";
@@ -72,6 +85,14 @@ int main(void)
 		testMenu->registerTest<test::TestTexture2D>("2D Texture");
 
 		while (!glfwWindowShouldClose(window)) {
+			float ratio;
+			int width, height;
+			//double time = glfwGetTime();
+
+			GLCall(glfwGetFramebufferSize(window, &width, &height));
+			ratio = width / (float)height;
+			GLCall(glViewport(0, 0, width, height));
+
 			GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 			renderer.clear();
 
@@ -110,5 +131,5 @@ int main(void)
 	glfwDestroyWindow(window);
 	glfwTerminate();
 
-	return 0;
+	exit(EXIT_SUCCESS);
 }
