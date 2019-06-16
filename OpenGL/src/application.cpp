@@ -22,6 +22,7 @@
 #include "imgui/imgui_impl_glfw.h"
 
 #include "test/TestClearColor.h"
+#include "test/TestTexture2D.h"
 
 int main(void)
 {
@@ -68,8 +69,10 @@ int main(void)
 		currentTest = testMenu;
 
 		testMenu->registerTest<test::TestClearColor>("Clear Color");
+		testMenu->registerTest<test::TestTexture2D>("2D Texture");
 
 		while (!glfwWindowShouldClose(window)) {
+			GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 			renderer.clear();
 
 			ImGui_ImplOpenGL3_NewFrame();
@@ -92,6 +95,11 @@ int main(void)
 
 			GLCall(glfwSwapBuffers(window));
 			GLCall(glfwPollEvents());
+		}
+
+		delete currentTest;
+		if (currentTest != testMenu) {
+			delete testMenu;
 		}
 	}
 
