@@ -6,7 +6,7 @@ namespace test {
 	class TestClearColor : public Test
 	{
 	public:
-		TestClearColor();
+		TestClearColor(const std::string& name);
 		~TestClearColor();
 
 		void onUpdate(float deltaTime) override;

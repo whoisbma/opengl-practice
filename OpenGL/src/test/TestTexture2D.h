@@ -11,7 +11,7 @@ namespace test {
 	class TestTexture2D : public Test
 	{
 	public:
-		TestTexture2D();
+		TestTexture2D(const std::string& name);
 		~TestTexture2D();
 
 		void onUpdate(float deltaTime) override;

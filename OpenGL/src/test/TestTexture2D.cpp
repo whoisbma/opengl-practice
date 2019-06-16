@@ -1,14 +1,15 @@
 #include "TestTexture2D.h"
 #include "Renderer.h"
 #include "imgui/imgui.h"
-
-
 #include "glm/gtc/matrix_transform.hpp"
+
+#include <iostream>
+#include <string>
 
 using namespace test;
 
-TestTexture2D::TestTexture2D()
-:
+TestTexture2D::TestTexture2D(const std::string& name)
+:	Test(name),
 	m_translationA(200, 200, 0),
 	m_translationB(400, 200, 0),
 	m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
@@ -47,6 +48,8 @@ TestTexture2D::TestTexture2D()
 
 	m_texture = std::make_unique<Texture>("res/textures/doge.jpg");
 	m_shader->setUniform1i("u_texture", 0);
+
+	std::cout << "created test for " << name << std::endl;
 }
 
 TestTexture2D::~TestTexture2D()

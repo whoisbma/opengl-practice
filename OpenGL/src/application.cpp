@@ -78,7 +78,7 @@ int main(void)
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 
 		test::Test* currentTest = nullptr;
-		test::TestMenu* testMenu = new test::TestMenu(currentTest);
+		test::TestMenu* testMenu = new test::TestMenu(currentTest, "Test Menu");
 		currentTest = testMenu;
 
 		testMenu->registerTest<test::TestClearColor>("Clear Color");
@@ -87,7 +87,6 @@ int main(void)
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;
 			int width, height;
-			//double time = glfwGetTime();
 
 			GLCall(glfwGetFramebufferSize(window, &width, &height));
 			ratio = width / (float)height;
@@ -101,9 +100,9 @@ int main(void)
 			ImGui::NewFrame();
 
 			if (currentTest) {
-				currentTest->onUpdate(0.0f);
+				currentTest->onUpdate(glfwGetTime());
 				currentTest->onRender();
-				ImGui::Begin("Test");
+				ImGui::Begin(currentTest->getName().c_str());
 				if (currentTest != testMenu && ImGui::Button("<--")) {
 					delete currentTest;
 					currentTest = testMenu;

@@ -2,11 +2,17 @@
 #include "Renderer.h"
 #include "imgui/imgui.h"
 
+#include <iostream>
+#include <string>
+
 using namespace test;
 
-TestClearColor::TestClearColor()
-	: m_clearColor{0.2f, 0.3f, 0.8f, 1.0f}
+TestClearColor::TestClearColor(const std::string& name)
+: 
+	m_clearColor{ 0.2f, 0.3f, 0.8f, 1.0f },
+	Test(name)
 {
+	std::cout << "created test for " << name << std::endl;
 }
 
 TestClearColor::~TestClearColor()
