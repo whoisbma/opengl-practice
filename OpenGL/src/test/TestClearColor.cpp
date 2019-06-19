@@ -19,7 +19,7 @@ TestClearColor::~TestClearColor()
 {
 }
 
-void TestClearColor::onUpdate(float deltatime)
+void TestClearColor::onUpdate(double deltatime)
 {
 
 }

@@ -9,7 +9,7 @@ namespace test {
 		TestClearColor(const std::string& name);
 		~TestClearColor();
 
-		void onUpdate(float deltaTime) override;
+		void onUpdate(double deltaTime) override;
 		void onRender() override;
 		void onImGuiRender() override;
 	private:

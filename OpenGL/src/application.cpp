@@ -92,7 +92,6 @@ int main(void)
 			ratio = width / (float)height;
 			GLCall(glViewport(0, 0, width, height));
 
-			GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 			renderer.clear();
 
 			ImGui_ImplOpenGL3_NewFrame();

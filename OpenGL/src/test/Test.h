@@ -12,7 +12,7 @@ namespace test {
 		Test() {}
 		virtual ~Test() {}
 
-		virtual void onUpdate(float deltaTime) {}
+		virtual void onUpdate(double deltaTime) {}
 		virtual void onRender() {}
 		virtual void onImGuiRender() {}
 

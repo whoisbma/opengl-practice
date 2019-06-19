@@ -12,9 +12,9 @@ namespace test {
 	{
 	public:
 		TestTexture2D(const std::string& name);
-		~TestTexture2D();
+		~TestTexture2D() {}
 
-		void onUpdate(float deltaTime) override;
+		void onUpdate(double deltaTime) override;
 		void onRender() override;
 		void onImGuiRender() override;
 	private:
