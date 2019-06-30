@@ -23,6 +23,9 @@
 
 #include "test/TestClearColor.h"
 #include "test/TestTexture2D.h"
+#include "test/TestVertexColor.h"
+#include "test/TestGenTexture.h"
+#include "test/TestTextureBlend.h"
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -83,6 +86,9 @@ int main(void)
 
 		testMenu->registerTest<test::TestClearColor>("Clear Color");
 		testMenu->registerTest<test::TestTexture2D>("2D Texture");
+		testMenu->registerTest<test::TestVertexColor>("Vertex Color");
+		testMenu->registerTest<test::TestGenTexture>("Generate Texture");
+		testMenu->registerTest<test::TestTextureBlend>("Blend Textures");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;
