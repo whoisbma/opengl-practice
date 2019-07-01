@@ -26,6 +26,7 @@
 #include "test/TestVertexColor.h"
 #include "test/TestGenTexture.h"
 #include "test/TestTextureBlend.h"
+#include "test/TestMatrixOps.h"
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -89,6 +90,7 @@ int main(void)
 		testMenu->registerTest<test::TestVertexColor>("Vertex Color");
 		testMenu->registerTest<test::TestGenTexture>("Generate Texture");
 		testMenu->registerTest<test::TestTextureBlend>("Blend Textures");
+		testMenu->registerTest<test::TestMatrixOps>("Matrix Operations");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;
