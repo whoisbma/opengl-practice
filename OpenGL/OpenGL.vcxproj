@@ -147,6 +147,7 @@
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\test\Test.cpp" />
+    <ClCompile Include="src\test\TestCube.cpp" />
     <ClCompile Include="src\test\TestGenTexture.cpp" />
     <ClCompile Include="src\test\TestMatrixOps.cpp" />
     <ClCompile Include="src\test\TestTexture2D.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\blendedTextures.shader" />
+    <None Include="res\shaders\cube.shader" />
     <None Include="res\shaders\generatedTexture.shader" />
     <None Include="res\shaders\texture.shader" />
     <None Include="res\shaders\vertexColor.shader" />
@@ -308,6 +310,7 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\test\Test.h" />
+    <ClInclude Include="src\test\TestCube.h" />
     <ClInclude Include="src\test\TestGenTexture.h" />
     <ClInclude Include="src\test\TestMatrixOps.h" />
     <ClInclude Include="src\test\TestTexture2D.h" />

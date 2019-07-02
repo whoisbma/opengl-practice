@@ -81,6 +81,9 @@
     <ClCompile Include="src\test\TestMatrixOps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\test\TestCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -483,6 +486,7 @@
     <None Include="res\shaders\texture.shader" />
     <None Include="res\shaders\generatedTexture.shader" />
     <None Include="res\shaders\blendedTextures.shader" />
+    <None Include="res\shaders\cube.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1275,6 +1279,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\TestMatrixOps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\TestCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

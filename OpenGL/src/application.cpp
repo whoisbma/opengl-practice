@@ -27,6 +27,7 @@
 #include "test/TestGenTexture.h"
 #include "test/TestTextureBlend.h"
 #include "test/TestMatrixOps.h"
+#include "test/TestCube.h";
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -75,6 +76,9 @@ int main(void)
 		GLCall(glEnable(GL_BLEND));
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
+		GLCall(glEnable(GL_DEPTH_TEST));
+		GLCall(glEnable(GL_STENCIL_TEST));
+
 		Renderer renderer;
 
 		ImGui::CreateContext();
@@ -91,6 +95,7 @@ int main(void)
 		testMenu->registerTest<test::TestGenTexture>("Generate Texture");
 		testMenu->registerTest<test::TestTextureBlend>("Blend Textures");
 		testMenu->registerTest<test::TestMatrixOps>("Matrix Operations");
+		testMenu->registerTest<test::TestCube>("Cube");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;
