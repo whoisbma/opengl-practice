@@ -8,18 +8,17 @@
 
 using namespace test;
 
-// TODO - matrix values controllable in imgui
-
-TestMatrixOps::TestMatrixOps(const std::string & name)
-	: Test(name),
+TestMatrixOps::TestMatrixOps(const std::string & name) :
+	Test(name),
+	m_fov(45.0f),
 	m_translation(0, 0, 0),
-	m_proj(glm::perspective(glm::radians(45.0f), 640.0f / 480.0f, 1.0f, 10.0f)),
-	m_view(glm::lookAt(
-		glm::vec3(0.0f, 0.0f, 3.0f), // position of the camera
-		glm::vec3(0.0f, 0.0f, 0.0f), // point to be centered on-screen
-		glm::vec3(0.0f, 1.0f, 0.0f)  // the up axis
-	))
+	m_camera(0.0f, 0.0f, 3.0f),
+	m_target(0.0f, 0.0f, 0.0f),
+	m_upAxis(0.0f, 1.0f, 0.0f)
 {
+	m_proj = glm::perspective(glm::radians(m_fov), 640.0f / 480.0f, 1.0f, 20.0f);
+	m_view = glm::lookAt(m_camera, m_target, m_upAxis);
+
 	float positions[] = {
 		-1.0f, -1.0f, 1.0f, 0.0f, 0.0f,
 		 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
@@ -57,11 +56,10 @@ void TestMatrixOps::onRender()
 	Renderer renderer;
 	renderer.clear();
 	{
-		// try a simple rotation
 		glm::mat4 trans = glm::mat4(1.0f);
-		trans = glm::rotate(trans, glm::radians(m_time * 10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-
+		//trans = glm::rotate(trans, glm::radians(m_time * 10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		glm::mat4 model = glm::translate(trans, m_translation);
+		model = glm::rotate(model, glm::radians(m_time * 30.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		glm::mat4 mvp = m_proj * m_view * model;
 		m_shader->bind();
 		m_shader->setUniformMat4f("u_MVP", mvp);
@@ -72,5 +70,19 @@ void TestMatrixOps::onRender()
 
 void TestMatrixOps::onImGuiRender()
 {
+	ImGui::SliderFloat3("Translation", glm::value_ptr(m_translation), -10.0f, 10.0f);
+
+	if (ImGui::SliderFloat3("Camera Position", glm::value_ptr(m_camera), -5.0f, 5.0f)) {
+		m_view = glm::lookAt(m_camera, m_target, m_upAxis);
+	}
+
+	if (ImGui::SliderFloat3("Camera Target", glm::value_ptr(m_target), -5.0f, 5.0f)) {
+		m_view = glm::lookAt(m_camera, m_target, m_upAxis);
+	}
+
+	if (ImGui::SliderFloat("Camera FOV", &m_fov, 0.0f, 100.0f)) {
+		m_proj = glm::perspective(glm::radians(m_fov), 640.0f / 480.0f, 1.0f, 20.0f);
+	}
+
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }

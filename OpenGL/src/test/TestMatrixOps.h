@@ -24,5 +24,12 @@ namespace test {
 		glm::vec3 m_translation;
 		glm::mat4 m_proj, m_view;
 		float m_time;
+
+		glm::vec3 m_transform;
+
+		float m_fov;
+		glm::vec3 m_camera;
+		glm::vec3 m_target;
+		glm::vec3 m_upAxis;
 	};
 }
