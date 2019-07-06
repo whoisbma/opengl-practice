@@ -29,6 +29,7 @@
 #include "test/TestMatrixOps.h"
 #include "test/TestCube.h"
 #include "test/TestPlanarReflection.h"
+#include "test/TestOutline.h"
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -98,6 +99,7 @@ int main(void)
 		testMenu->registerTest<test::TestMatrixOps>("Matrix Operations");
 		testMenu->registerTest<test::TestCube>("Cube");
 		testMenu->registerTest<test::TestPlanarReflection>("Planar Reflection");
+		testMenu->registerTest<test::TestOutline>("Outline");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;
