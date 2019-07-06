@@ -150,6 +150,7 @@
     <ClCompile Include="src\test\TestCube.cpp" />
     <ClCompile Include="src\test\TestGenTexture.cpp" />
     <ClCompile Include="src\test\TestMatrixOps.cpp" />
+    <ClCompile Include="src\test\TestPlanarReflection.cpp" />
     <ClCompile Include="src\test\TestTexture2D.cpp" />
     <ClCompile Include="src\test\TestTextureBlend.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="src\test\TestCube.h" />
     <ClInclude Include="src\test\TestGenTexture.h" />
     <ClInclude Include="src\test\TestMatrixOps.h" />
+    <ClInclude Include="src\test\TestPlanarReflection.h" />
     <ClInclude Include="src\test\TestTexture2D.h" />
     <ClInclude Include="src\test\TestTextureBlend.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />

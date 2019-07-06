@@ -27,7 +27,8 @@
 #include "test/TestGenTexture.h"
 #include "test/TestTextureBlend.h"
 #include "test/TestMatrixOps.h"
-#include "test/TestCube.h";
+#include "test/TestCube.h"
+#include "test/TestPlanarReflection.h"
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -96,6 +97,7 @@ int main(void)
 		testMenu->registerTest<test::TestTextureBlend>("Blend Textures");
 		testMenu->registerTest<test::TestMatrixOps>("Matrix Operations");
 		testMenu->registerTest<test::TestCube>("Cube");
+		testMenu->registerTest<test::TestPlanarReflection>("Planar Reflection");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;

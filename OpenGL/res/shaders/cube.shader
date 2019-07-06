@@ -29,11 +29,12 @@ layout(location = 0) out vec4 gl_FragColor;
 
 uniform sampler2D u_textureA;
 uniform sampler2D u_textureB;
+uniform float u_reflectionColorMod;
 uniform float u_blendAmt;
 
 void main()
 {
 	vec4 colA = texture(u_textureA, v_texCoord);
 	vec4 colB = texture(u_textureB, v_texCoord);
-	gl_FragColor = mix(colA, colB, u_blendAmt);
+	gl_FragColor = mix(colA, colB, u_blendAmt) * vec4(v_color, 1.0) * vec4(u_reflectionColorMod, u_reflectionColorMod, u_reflectionColorMod, 1.0f);
 };
