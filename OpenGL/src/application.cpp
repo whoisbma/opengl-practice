@@ -30,6 +30,7 @@
 #include "test/TestCube.h"
 #include "test/TestPlanarReflection.h"
 #include "test/TestOutline.h"
+#include "test/TestFrameBuffer.h"
 
 void glfwErrorCallback(int error, const char* description)
 {
@@ -100,6 +101,7 @@ int main(void)
 		testMenu->registerTest<test::TestCube>("Cube");
 		testMenu->registerTest<test::TestPlanarReflection>("Planar Reflection");
 		testMenu->registerTest<test::TestOutline>("Outline");
+		testMenu->registerTest<test::TestFrameBuffer>("Frame Buffer");
 
 		while (!glfwWindowShouldClose(window)) {
 			float ratio;

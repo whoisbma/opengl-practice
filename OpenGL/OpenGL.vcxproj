@@ -142,12 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\FrameBuffer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\application.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\test\Test.cpp" />
     <ClCompile Include="src\test\TestCube.cpp" />
+    <ClCompile Include="src\test\TestFrameBuffer.cpp" />
     <ClCompile Include="src\test\TestGenTexture.cpp" />
     <ClCompile Include="src\test\TestMatrixOps.cpp" />
     <ClCompile Include="src\test\TestOutline.cpp" />
@@ -308,11 +310,13 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\FrameBuffer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\test\Test.h" />
     <ClInclude Include="src\test\TestCube.h" />
+    <ClInclude Include="src\test\TestFrameBuffer.h" />
     <ClInclude Include="src\test\TestGenTexture.h" />
     <ClInclude Include="src\test\TestMatrixOps.h" />
     <ClInclude Include="src\test\TestOutline.h" />
