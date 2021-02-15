@@ -11,12 +11,22 @@ using namespace test;
 TestMatrixOps::TestMatrixOps(const std::string & name) :
 	Test(name),
 	m_fov(45.0f),
+	m_zoomfactor(1.0f),
+	m_aspectratio(640.0f / 480.f),
+	m_aspectcondition(16.0f / 9.0f),
+	m_aspectratiox(1.0f),
+	m_aspectratioy(1.0f),
 	m_translation(0, 0, 0),
 	m_camera(0.0f, 0.0f, 3.0f),
 	m_target(0.0f, 0.0f, 0.0f),
 	m_upAxis(0.0f, 1.0f, 0.0f)
 {
-	m_proj = glm::perspective(glm::radians(m_fov), 640.0f / 480.0f, 1.0f, 20.0f);
+	if (m_aspect > m_aspectcondition)
+	{
+		m_aspectratiox = m_aspectcondition / m_aspectratio;
+	}
+	
+	m_proj = glm::perspective(2 * atan(tan(glm::radians(m_fov) / 2) / m_aspectratio * m_aspectcondition / m_aspectratiox / m_zoomfactor / m_aspectratioy), m_aspectratio * m_aspectratioy, 1.0f, 20.0f);
 	m_view = glm::lookAt(m_camera, m_target, m_upAxis);
 
 	float positions[] = {
@@ -81,7 +91,11 @@ void TestMatrixOps::onImGuiRender()
 	}
 
 	if (ImGui::SliderFloat("Camera FOV", &m_fov, 0.0f, 100.0f)) {
-		m_proj = glm::perspective(glm::radians(m_fov), 640.0f / 480.0f, 1.0f, 20.0f);
+		if (m_aspect > m_aspectcondition)
+		{
+			m_aspectratiox = m_aspectcondition / m_aspectratio;
+		}
+		m_proj = glm::perspective(2 * atan(tan(glm::radians(m_fov) / 2) / m_aspectratio * m_aspectcondition / m_aspectratiox / m_zoomfactor / m_aspectratioy), m_aspectratio * m_aspectratioy, 1.0f, 20.0f);
 	}
 
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
